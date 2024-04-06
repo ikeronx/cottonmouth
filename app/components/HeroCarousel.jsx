@@ -4,7 +4,7 @@ import React, {useState, useEffect} from 'react';
 const slideData = [
   {
     id: 1,
-    subheading: 'Summer Collection',
+    subheading: '',
     heading: 'Hot New Releases',
     description: 'Brand new drops, brand new reasons to go gym.',
     ctaLink: '/collections/women',
@@ -13,10 +13,18 @@ const slideData = [
   },
   {
     id: 2,
-    subheading: 'BACK TO BASICS',
+    subheading: '',
     heading: 'THE ESSENTIALS',
-    description:
-      'Simplicity Never Looked Better! We Have The Best .',
+    description: 'Simplicity Never Looked Better! We Have The Best .',
+    ctaLink: '/collections/women',
+    ctaText: 'Shop Now',
+    image: '/images/hero/hero-4.png',
+  },
+  {
+    id: 3,
+    subheading: '',
+    heading: 'THE ESSENTIALS',
+    description: 'Simplicity Never Looked Better! We Have The Best .',
     ctaLink: '/collections/women',
     ctaText: 'Shop Now',
     image: '/images/hero/hero-women-2.jpeg',
@@ -82,7 +90,6 @@ function HeroCarousel() {
           .slide {
             width: min(90%, 120.5rem);
             margin: 0 auto;
-            text-align: left;
             display: grid;
             grid-template-columns: 1fr;
             align-items: center;
@@ -107,21 +114,20 @@ function HeroCarousel() {
             padding: 0 2.4rem;
             text-align: center;
             @media (min-width: 45em) {
-            padding: 0 7rem;
-            text-align: left;
+              padding: 0 7rem;
+              text-align: left;
             }
-            // background-color: #000000;
             text-transform: uppercase;
-            }
+          }
 
           .primary-heading {
             font-size: 3.0rem;
-            font-weight: 800;
+            font-weight: 600;
             margin-bottom: 0.3rem;
-            line-height: 1.2; /* Adjust this value for tighter spacing */
-            }
+            line-height: 1.2;
+          }
 
-            .primary-heading-pre {
+          .primary-heading-pre {
             font-size: 1rem;
             font-weight: 100;
             text-transform: uppercase;
@@ -132,7 +138,7 @@ function HeroCarousel() {
             font-weight: 200;
             letter-spacing: 0.2px;
             margin-bottom: 1.3rem;
-            line-height: 1.7; /* Adjust this value for tighter spacing */
+            line-height: 1.7;
           }
 
           .ctaBtn,
@@ -145,12 +151,11 @@ function HeroCarousel() {
             color: #ffffff;
             letter-spacing: 0.1px;
             text-transform: uppercase;
-            padding: 1.2rem 3.2rem;
+            padding: 1.2rem 5rem;
             width: auto;
             cursor: pointer;
             font-family: inherit;
             transition: all 0.3s;
-            
           }
 
           .ctaBtn:hover,
@@ -164,7 +169,6 @@ function HeroCarousel() {
             background-color: transparent !important;
             border: none;
             cursor: pointer;
-            display: grid;
             place-items: center;
             transition: 0.3s ease-in-out all;
             z-index: 1000;
@@ -194,35 +198,33 @@ function HeroCarousel() {
             opacity: 1;
           }
 
-     .indicators {
-      position: absolute;
-    //   bottom: 10rem; /* Adjust this value as needed */
-    top: 90%;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      z-index: 100; /* Ensure the indicators appear above other content */
-  background-color: #637280;  /* Opaque black background */
-  padding: 5px; /* Padding around the indicators */
-  border-radius: 5rem; /* Make the background circular */
-  
-    }
+          .indicators {
+            position: absolute;
+            top: 82.5%;
+            right: 3.4%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 100;
+            background-color: #637280;
+            padding: 5px;
+            border-radius: 5rem;
+          }
 
-    .indicator {
-      width: 12px;
-      height: 12px;
-      border-radius: 50%;
-      background-color: #ffffff;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+          .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+          }
 
-    .indicator.active {
-      background-color: #333;
-    }
-  `}
+          .indicator.active {
+            background-color: #000;
+          }
+        `}
       </style>
 
       <section
@@ -251,10 +253,7 @@ function HeroCarousel() {
                 <h1 className="primary-heading" style={textStyles[slideIndex]}>
                   {heading}
                 </h1>
-                <div
-                  className="slide-description-container"
-                  style={{textAlign: 'left'}}
-                >
+                <div className="slide-description-container">
                   <h2
                     className="primary-heading--sub"
                     style={textStyles[slideIndex]}
@@ -273,58 +272,61 @@ function HeroCarousel() {
             </div>
           );
         })}
-        <div className="indicators">
+        <div className="indicators hidden">
           {slideData.map((_, index) => (
             <div
               key={index}
-              className={`indicator ${index === currentSlide ? 'active' : ''}`}
+              className={`hidden md:block indicator ${
+                index === currentSlide ? 'active' : ''
+              }`}
               onClick={() => handleIndicatorClick(index)}
             ></div>
           ))}
         </div>
-        <button
-          type="button"
-          className={`hidden md:block absolute top-1/2 left-3 md:left-6 transform -translate-y-1/2`}
-          onClick={prevSlide}
+        {/* <button
+            type="button"
+            className={`hidden md:block absolute top-1/2 left-3 md:left-6 transform -translate-y-1/2`}
+            onClick={prevSlide}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="btn-icon"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M15.75 19.5L8.25 12l7.5-7.5"
-            />
-          </svg>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="btn-icon"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                />
+            </svg>
         </button>
         <button
-          type="button"
-          className={`hidden md:block absolute top-1/2 right-3 md:right-6 transform -translate-y-1/2`}
-          onClick={nextSlide}
+            type="button"
+            className={`hidden md:block absolute top-1/2 right-3 md:right-6 transform -translate-y-1/2`}
+            onClick={nextSlide}
         >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            strokeWidth="1.5"
-            stroke="currentColor"
-            className="btn-icon button-svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M8.25 4.5l7.5 7.5-7.5 7.5"
-              style={{width: '100%', height: '100%'}}
-            />
-          </svg>
-        </button>
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="currentColor"
+                className="btn-icon button-svg"
+            >
+                <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                    style={{width: '100%', height: '100%'}}
+                />
+            </svg>
+        </button> */}
       </section>
     </>
   );
 }
+
 export default HeroCarousel;

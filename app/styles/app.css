@@ -48,6 +48,7 @@ html,
 body{
     height: 100%; 
     font-size: 62.5%;
+    color: #2d2d2d;
     overflow-x: hidden;
     scroll-behavior: smooth;
     font-family: 'Montserrat', sans-serif;
@@ -188,15 +189,19 @@ aside li {
   z-index: 101;
   padding: 2rem 2rem 2rem 0rem;
   @media (min-width: 45em) {
-    padding: 2rem 4rem;
+    padding: 3.5rem 4rem;
   }
 }
 
+/* icrease specifying to override the HTML inline style 'element.style{color: black}' to change the links color */
+.header-menu-links a.header-menu-item {
+  color: #252525 !important;
+}
+
 .header-menu-links{
-  /* font-weight: 700; */
-  font-size: 12px;
-  line-height: 1.75;
-  letter-spacing: 1.7px;
+  font-weight: 300; 
+  font-size: 1.2rem;
+  /* line-height: 1.75; */
   text-transform: uppercase;
 }
 
@@ -217,7 +222,7 @@ aside li {
   grid-gap: 1rem;
   @media (min-width: 45em) {
     display: flex;
-    grid-gap: 1rem;
+    grid-gap: 4rem;
     /* margin-right: 3rem; */
   }
 }
@@ -227,19 +232,21 @@ aside li {
 }
 
 .header__logo{
-  width: 102px;
-  height: 35px;
+  height: 5rem;
+  margin-right: 4rem; 
+  filter: invert(50%);
 }
 
 .header-ctas {
+  color: #252525;
   align-items: center;
   display: flex;
-  grid-gap: 1rem;
+  grid-gap: 4rem;
   margin-left: auto;
-  font-weight: 700;
-  font-size: 12px;
-  line-height: 1.75;
-  letter-spacing: 1.7px;
+  font-weight: 300;
+  font-size: 1.2rem;
+  /* line-height: 1.75; */
+  /* letter-spacing: 1.7px; */
   text-transform: uppercase;
 
 }

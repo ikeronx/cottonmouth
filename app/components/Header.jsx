@@ -17,11 +17,11 @@ export function Header({header, isLoggedIn, cart}) {
           className="header-menu-links"
         />
       </div>
-      <div className="mx-auto">
+      <div className="mx-auto color--l">
         <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
           <img
             className="header__logo navbar__logo logo w-32 h-auto"
-            src="images/logos/spiral_logo.png"
+            src="images/logos/spiral.png"
             alt="Spiral logo"
           />
         </NavLink>
