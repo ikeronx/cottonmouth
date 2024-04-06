@@ -1,3 +1,58 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* GOOGLE FONT - MONTSERRAT */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+
+@font-face {
+  font-family: 'HudsonNYPress';
+  src: url('/fonts/HudsonNYPress.woff') format('woff'), /* Modern Browsers */
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+}
+
+/**************************/
+/* CSS RESET */
+/**************************/
+/* Box sizing rules */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+*:focus{
+    outline: none;
+}
+/* Remove default margin */
+* {
+    margin: 0;
+    padding:0;
+    font: inherit;
+}
+/* Set core root defaults */
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+html, 
+body{
+    height: 100%; 
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    font-family: 'Montserrat', sans-serif;
+}
+
 :root {
   --aside-width: 400px;
   --cart-aside-summary-height-with-discount: 300px;
@@ -128,14 +183,21 @@ aside li {
 * --------------------------------------------------
 */
 .header {
-  align-items: center;
-  background: #fff;
-  display: flex;
   height: var(--header-height);
-  padding: 0 1rem;
-  position: sticky;
-  top: 0;
-  z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 24px 0px;
+  z-index: 101;
+  padding: 2rem 2rem 2rem 0rem;
+  @media (min-width: 45em) {
+    padding: 2rem 4rem;
+  }
+}
+
+.header-menu-links{
+  /* font-weight: 700; */
+  font-size: 12px;
+  line-height: 1.75;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
 }
 
 .header-menu-mobile-toggle {
@@ -156,7 +218,7 @@ aside li {
   @media (min-width: 45em) {
     display: flex;
     grid-gap: 1rem;
-    margin-left: 3rem;
+    /* margin-right: 3rem; */
   }
 }
 
@@ -164,11 +226,22 @@ aside li {
   cursor: pointer;
 }
 
+.header__logo{
+  width: 102px;
+  height: 35px;
+}
+
 .header-ctas {
   align-items: center;
   display: flex;
   grid-gap: 1rem;
   margin-left: auto;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1.75;
+  letter-spacing: 1.7px;
+  text-transform: uppercase;
+
 }
 
 /*
@@ -345,13 +418,16 @@ aside li {
 */
 .collections-grid {
   display: grid;
-  grid-gap: 1.5rem;
+  grid-gap: 5rem;
   grid-template-columns: repeat(auto-fit, minmax(var(--grid-item-width), 1fr));
   margin-bottom: 2rem;
 }
 
 .collection-item img {
-  height: auto;
+  /* height: 100%; */
+  /* width: 100%; */
+  object-fit: cover;
+  border-radius: 1rem;
 }
 
 /*
