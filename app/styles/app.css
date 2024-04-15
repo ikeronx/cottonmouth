@@ -183,10 +183,20 @@ aside li {
 * components/Header
 * --------------------------------------------------
 */
+
+.announcement-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
 .header {
   height: var(--header-height);
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 24px 0px;
   z-index: 101;
+  top: 3%;
   padding: 2rem 2rem 2rem 0rem;
   @media (min-width: 45em) {
     padding: 3.5rem 4rem;

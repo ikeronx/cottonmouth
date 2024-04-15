@@ -8,6 +8,7 @@ import {
   PredictiveSearchForm,
   PredictiveSearchResults,
 } from '~/components/Search';
+import AnnouncementSlider from '~/components/AnnouncementSlider';
 
 /**
  * @param {LayoutProps}
@@ -17,6 +18,7 @@ export function Layout({cart, children = null, footer, header, isLoggedIn}) {
     <>
       <CartAside cart={cart} />
       <SearchAside />
+      <AnnouncementSlider />
       <MobileMenuAside menu={header?.menu} shop={header?.shop} />
       {header && <Header header={header} cart={cart} isLoggedIn={isLoggedIn} />}
       <main>{children}</main>

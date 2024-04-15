@@ -1,8 +1,11 @@
 import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
-import {Image, Money} from '@shopify/hydrogen';
+import { Image, Money } from '@shopify/hydrogen';
 import HeroCarousel from '~/components/HeroCarousel';
+import AnnouncementSlider from '~/components/AnnouncementSlider';
+import ProductForm from '~/routes/products.$handle'; // Add to Cart button and functionality
+
 /**
  * @type {MetaFunction}
  */
@@ -27,9 +30,11 @@ export default function Homepage() {
   const data = useLoaderData();
   return (
     <div className="home">
-      <HeroCarousel/>
-      <FeaturedCollection collection={data.featuredCollection} />
+      {/* <AnnouncementSlider /> */}
+      <HeroCarousel />
+      {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       <RecommendedProducts products={data.recommendedProducts} />
+      {/* <AnnouncementSlider /> */}
     </div>
   );
 }
@@ -65,27 +70,32 @@ function FeaturedCollection({collection}) {
 function RecommendedProducts({products}) {
   return (
     <div className="recommended-products">
-      <h2>Recommended Products lk';lk</h2>
+      <h2>Recommended Products</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
             <div className="recommended-products-grid">
               {products.nodes.map((product) => (
-                <Link
-                  key={product.id}
-                  className="recommended-product"
-                  to={`/products/${product.handle}`}
-                >
-                  <Image
-                    data={product.images.nodes[0]}
-                    aspectRatio="1/1"
-                    sizes="(min-width: 45em) 20vw, 50vw"
-                  />
-                  <h4>{product.title}</h4>
-                  <small>
-                    <Money data={product.priceRange.minVariantPrice} />
-                  </small>
-                </Link>
+                <div key={product.id} className="recommended-product">
+                  <Link to={`/products/${product.handle}`}>
+                    <Image
+                      data={product.images.nodes[0]}
+                      aspectRatio="1/1"
+                      sizes="(min-width: 45em) 20vw, 50vw"
+                    />
+                    <h4>{product.title}</h4>
+                    <small>
+                      <Money data={product.priceRange.minVariantPrice} />
+                    </small>
+                  </Link>
+                  {/* Add ProductForm below the Link component */}
+                  {/* <ProductForm
+                    product={product}
+                    selectedVariant={product.variants?.nodes[0]} // Add optional chaining here
+                    variants={product.variants?.nodes} // Add optional chaining here
+                    buttonClassName="add-to-cart-button"
+                  /> */}
+                </div>
               ))}
             </div>
           )}

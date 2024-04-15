@@ -1,6 +1,8 @@
 import {Await, NavLink} from '@remix-run/react';
 import {Suspense} from 'react';
-import {useRootLoaderData} from '~/root';
+import { useRootLoaderData } from '~/root';
+import AnnouncementSlider from '~/components/AnnouncementSlider';
+
 
 /**
  * @param {HeaderProps}
@@ -8,26 +10,29 @@ import {useRootLoaderData} from '~/root';
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   return (
-    <header className="header flex items-center bg-white sticky top-0 z-10">
-      <div className="flex items-center header-menu-links">
-        <HeaderMenu
-          menu={menu}
-          viewport="desktop"
-          primaryDomainUrl={header.shop.primaryDomain.url}
-          className="header-menu-links"
-        />
-      </div>
-      <div className="mx-auto color--l">
-        <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-          <img
-            className="header__logo navbar__logo logo w-32 h-auto"
-            src="images/logos/spiral.png"
-            alt="Spiral logo"
+    <>
+      <AnnouncementSlider />
+      <header className="header flex items-center bg-white sticky top-0 z-10">
+        <div className="flex items-center header-menu-links">
+          <HeaderMenu
+            menu={menu}
+            viewport="desktop"
+            primaryDomainUrl={header.shop.primaryDomain.url}
+            className="header-menu-links"
           />
-        </NavLink>
-      </div>
-      <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
-    </header>
+        </div>
+        <div className="mx-auto color--l">
+          <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
+            <img
+              className="header__logo navbar__logo logo w-32 h-auto"
+              src="images/logos/spiral.png"
+              alt="Spiral logo"
+            />
+          </NavLink>
+        </div>
+        <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      </header>
+    </>
   );
 }
 
