@@ -28,7 +28,10 @@ const AnnouncementSlider = () => {
             }`}
             style={{height: '100%', display: idx === index ? 'block' : 'none'}}
           >
-            <span className="text-center uppercase" style={{marginTop: '50%'}}>
+            <span
+              className="announcement-container--text text-center uppercase"
+              style={{marginTop: '50%'}}
+            >
               {announcement.text}
             </span>
           </div>

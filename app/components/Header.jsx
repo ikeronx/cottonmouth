@@ -9,28 +9,51 @@ import AnnouncementSlider from '~/components/AnnouncementSlider';
  */
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
+
   return (
     <>
       <AnnouncementSlider />
-      <header className="header flex items-center bg-white sticky top-0 z-10">
-        <div className="flex items-center header-menu-links">
-          <HeaderMenu
-            menu={menu}
-            viewport="desktop"
-            primaryDomainUrl={header.shop.primaryDomain.url}
-            className="header-menu-links"
-          />
-        </div>
-        <div className="mx-auto color--l">
-          <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
+      <header className="header header-menu-links bg-white sticky top-0 z-10">
+        {/* First row */}
+        <div className="header-menu-top-row flex justify-between items-center px-4 ">
+          {/* Left side */}
+          <div className="flex items-center space-x-3">
             <img
-              className="header__logo navbar__logo logo w-32 h-auto"
-              src="images/logos/spiral.png"
+              src="/images/logos/flag-icon1.svg"
+              alt="United States"
+              srcSet="/images/logos/flag-icon1.svg"
+              width="16"
+              height="8"
+              className="rounded-none"
+            />
+            <a href="#" className="header-menu-item no-underline">
+              United States&nbsp;&nbsp;|&nbsp;&nbsp;English
+            </a>
+          </div>
+          {/* Center (logo) */}
+          <NavLink to="/" style={{textDecoration: 'none'}}>
+            <img
+              className="header__logo w-32 h-auto"
+              src="/images/logos/cottonn.png"
               alt="Spiral logo"
             />
           </NavLink>
+          {/* Right side */}
+          <div className="header-menu-item header-menu-links flex items-center">
+            <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+          </div>
         </div>
-        <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+        {/* Line */}
+        <span class="header-line-separator">&nbsp;</span>
+        {/* Second row */}
+        <div className="header-menu-bottom-row flex justify-center">
+          <HeaderMenu
+            menu={menu}
+            viewport="desktop"
+            primaryDomainUrl={shop.primaryDomain.url}
+            className=""
+          />
+        </div>
       </header>
     </>
   );

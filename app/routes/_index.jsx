@@ -2,8 +2,19 @@ import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
 import { Image, Money } from '@shopify/hydrogen';
-import HeroCarousel from '~/components/HeroCarousel';
-import AnnouncementSlider from '~/components/AnnouncementSlider';
+import WomenHeroCarousel from '~/components/WomenHeroCarousel';
+// import MenHeroCarousel from '~/components/MenHeroCarousel';
+import {AddToCartButton} from '@shopify/hydrogen-react';
+// export default function ProductAddToCartButton({product}) {
+//   const variantId = product.variants[0].id;
+
+//   if (!variantId) {
+//     return null;
+//   }
+
+//   return <AddToCartButton variantId={product.variants[0].id} />;
+// }
+
 import ProductForm from '~/routes/products.$handle'; // Add to Cart button and functionality
 
 /**
@@ -30,11 +41,10 @@ export default function Homepage() {
   const data = useLoaderData();
   return (
     <div className="home">
-      {/* <AnnouncementSlider /> */}
-      <HeroCarousel />
+      <WomenHeroCarousel />
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       <RecommendedProducts products={data.recommendedProducts} />
-      {/* <AnnouncementSlider /> */}
+      {/* <MenHeroCarousel/> */}
     </div>
   );
 }
@@ -69,34 +79,41 @@ function FeaturedCollection({collection}) {
  */
 function RecommendedProducts({products}) {
   return (
-    <div className="recommended-products">
-      <h2>Recommended Products</h2>
+    <div className="recommended-products section-separator">
+      {/* <span className="section-separator">&nbsp;</span> */}
+      <h2 className="section-header">Women '24 collection</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products-grid">
-              {products.nodes.map((product) => (
-                <div key={product.id} className="recommended-product">
-                  <Link to={`/products/${product.handle}`}>
-                    <Image
-                      data={product.images.nodes[0]}
-                      aspectRatio="1/1"
-                      sizes="(min-width: 45em) 20vw, 50vw"
-                    />
-                    <h4>{product.title}</h4>
-                    <small>
-                      <Money data={product.priceRange.minVariantPrice} />
-                    </small>
-                  </Link>
-                  {/* Add ProductForm below the Link component */}
-                  {/* <ProductForm
-                    product={product}
-                    selectedVariant={product.variants?.nodes[0]} // Add optional chaining here
-                    variants={product.variants?.nodes} // Add optional chaining here
-                    buttonClassName="add-to-cart-button"
-                  /> */}
-                </div>
-              ))}
+            <div>
+              <div className="recommended-products-grid mb-[11rem]">
+                {products.nodes.map((product) => (
+                  <div
+                    key={product.id}
+                    className="recommended-product text-center"
+                  >
+                    <Link to={`/products/${product.handle}`}>
+                      <Image
+                        data={product.images.nodes[0]}
+                        aspectRatio="1/1"
+                        sizes="(min-width: 45em) 20vw, 50vw"
+                      />
+                      <h4 className="ProductItem__Title">{product.title}</h4>
+                      <small className="ProductItem__Title ProductItem__Title--price">
+                        <Money data={product.priceRange.minVariantPrice} />
+                      </small>
+                    </Link>
+                    {/* <AddToCartButton variantId={product.id} /> */}
+                  </div>
+                ))}
+              </div>
+
+              {/* Center-aligned link button */}
+              <div className="flex justify-center">
+                <Link to={`/collections/women`}>
+                  <span className="Primary__Button Dark__Button">View All</span>
+                </Link>
+              </div>
             </div>
           )}
         </Await>
@@ -105,6 +122,7 @@ function RecommendedProducts({products}) {
     </div>
   );
 }
+
 
 const FEATURED_COLLECTION_QUERY = `#graphql
   fragment FeaturedCollection on Collection {
@@ -152,7 +170,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   }
   query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    products(first: 4, sortKey: UPDATED_AT, reverse: true) {
+    products(first: 4, sortKey: UPDATED_AT, reverse: false) {
       nodes {
         ...RecommendedProduct
       }

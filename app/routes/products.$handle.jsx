@@ -196,21 +196,24 @@ function ProductPrice({selectedVariant}) {
     <div className="product-price">
       {selectedVariant?.compareAtPrice ? (
         <>
-          <p>Sale</p>
+          <p className="price-label">Sale</p>
           <br />
           <div className="product-price-on-sale">
             {selectedVariant ? <Money data={selectedVariant.price} /> : null}
-            <s>
+            <s className="price-value">
               <Money data={selectedVariant.compareAtPrice} />
             </s>
           </div>
         </>
       ) : (
-        selectedVariant?.price && <Money data={selectedVariant?.price} />
+        selectedVariant?.price && (
+          <Money data={selectedVariant?.price} className="price-value" />
+        )
       )}
     </div>
   );
 }
+
 
 /**
  * @param {{
