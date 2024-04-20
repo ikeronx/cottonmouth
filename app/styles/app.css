@@ -195,18 +195,19 @@ aside li {
 }
 
 .announcement-container--text {
-  margin-left: 0.3rem;
+  margin-right: 4.3rem;
 }
 
 .header {
-  height: var(--header-height);
+  height: 4.6rem;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 24px 0px;
   z-index: 4;
   position: sticky;
-  top: 3%;
+  top: 2.5%;
   padding: 2rem 2rem 2rem 0rem;
   @media (min-width: 45em) {
     padding: 2rem 4rem;
+    height: 10rem;
   }
 }
 
@@ -220,8 +221,22 @@ aside li {
     margin-block: 2rem 0;
 }
 
+.header-menu-top-row{
+  padding-inline: 1rem 0; 
+  @media (min-width: 45em) {
+    padding-inline: 0;
+    /* margin-right: 3rem; */
+  }
+}
+
 .header-menu-bottom-row{
   margin-top: -.6rem; 
+
+  @media (min-width: 45em) {
+    grid-gap: 4rem;
+    font-size: 1.2rem;
+    /* margin-right: 3rem; */
+  }
 }
 
 /* icrease specifying to override the HTML inline style 'element.style{color: black}' to change the links color */
@@ -261,23 +276,29 @@ aside li {
 }
 
 .header__logo{
-  height: 1.6rem;
+  height: .8rem;
   width: auto;
-  margin-right: 10rem;
-  /* filter: invert(50%); */
+  @media (min-width: 45em) {
+    height: 1.6rem;
+  }
 }
 
 .header-ctas {
   color: #252525;
   align-items: center;
   display: flex;
-  grid-gap: 4rem;
+  grid-gap: 1rem;
   margin-left: auto;
   font-weight: 300;
-  font-size: 1.2rem;
+  font-size: .8rem;
   /* line-height: 1.75; */
   /* letter-spacing: 1.7px; */
   text-transform: uppercase;
+  @media (min-width: 45em) {
+    grid-gap: 4rem;
+    font-size: 1.2rem;
+    /* margin-right: 3rem; */
+  }
 
 }
 
@@ -578,9 +599,9 @@ aside li {
 /* button */
 .product-form form button, 
 /* Description title */
-.product-main p strong
+.product-main p,
 /* Description text */
-.product-main div span{
+.product-main > div:nth-of-type(3){
   font-family: 'Montserrat', sans-serif;
   font-weight: 300;
   color: #2d2d2d;
@@ -617,17 +638,33 @@ aside li {
 
 /* button */
 .product-form form button{
-  background-color: green;
+  background: transparent;
+  font-size: 1.2rem;
+  font-family: Montserrat, sans-serif;
+  color: #fff;
+  background: #323232;
+  text-decoration: none;
+  font-weight: 400;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  padding: 1.2rem 5rem;
+  width: 100%;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all .3s;
 }
 
 /* Description title */
-.product-main p strong{
-  color: orange;
+.product-main p{
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  padding-block: 2rem 0;
 }
 
 /* Description text */
-.product-main div span{
-  color: blueviolet;
+.product-main > div:nth-of-type(3) {
+  font-size: 1.2rem;
+  margin-bottom: 1.6em;
 }
 
 /* this for all the products on the homepage products */

@@ -15,9 +15,11 @@ export function Header({header, isLoggedIn, cart}) {
       <AnnouncementSlider />
       <header className="header header-menu-links bg-white sticky top-0 z-10">
         {/* First row */}
-        <div className="header-menu-top-row flex justify-between items-center px-4 ">
+        <div className="header-menu-top-row flex justify-between items-center">
           {/* Left side */}
-          <div className="flex items-center space-x-3">
+          <div className="hidden sm:flex items-center space-x-3">
+            {' '}
+            {/* Add 'hidden sm:flex' classes */}
             <img
               src="/images/logos/flag-icon1.svg"
               alt="United States"
@@ -27,7 +29,7 @@ export function Header({header, isLoggedIn, cart}) {
               className="rounded-none"
             />
             <a href="#" className="header-menu-item no-underline">
-              United States&nbsp;&nbsp;|&nbsp;&nbsp;English
+              English
             </a>
           </div>
           {/* Center (logo) */}
@@ -44,7 +46,7 @@ export function Header({header, isLoggedIn, cart}) {
           </div>
         </div>
         {/* Line */}
-        <span class="header-line-separator">&nbsp;</span>
+        <span className="header-line-separator ">&nbsp;</span>
         {/* Second row */}
         <div className="header-menu-bottom-row flex justify-center">
           <HeaderMenu
