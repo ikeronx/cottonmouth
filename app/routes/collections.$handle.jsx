@@ -46,8 +46,8 @@ export default function Collection() {
   const {collection} = useLoaderData();
 
   return (
-    <div className="collection">
-      <h1>{collection.title}</h1>
+    <div className="collection catalog-products-container">
+      <h1 className="section-header">{collection.title}</h1>
       <p className="collection-description">{collection.description}</p>
       <Pagination connection={collection.products}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
@@ -58,7 +58,15 @@ export default function Collection() {
             <ProductsGrid products={nodes} />
             <br />
             <NextLink>
-              {isLoading ? 'Loading...' : <span>Load more ↓</span>}
+              {isLoading ? (
+                'Loading...'
+              ) : (
+                <div className="flex justify-center mt-20">
+                  <span className="uppercase text-3xl font-light">
+                    Load more ↓
+                  </span>
+                </div>
+              )}
             </NextLink>
           </>
         )}
@@ -111,8 +119,8 @@ function ProductItem({product, loading}) {
           sizes="(min-width: 45em) 400px, 100vw"
         />
       )}
-      <h4>{product.title}</h4>
-      <small>
+      <h4 className="ProductItem__Title">{product.title}</h4>
+      <small className="ProductItem__Title ProductItem__Title--price">
         <Money data={product.priceRange.minVariantPrice} />
       </small>
     </Link>

@@ -45,9 +45,10 @@ export function SearchForm({searchTerm}) {
         placeholder="Search…"
         ref={inputRef}
         type="search"
+        className='searchBar'
       />
       &nbsp;
-      <button type="submit">Search</button>
+      {/* <button type="submit">Search</button> */}
     </Form>
   );
 }

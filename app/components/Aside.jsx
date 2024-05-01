@@ -25,7 +25,7 @@ export function Aside({children, heading, id = 'aside'}) {
       />
       <aside>
         <header>
-          <h3>{heading}</h3>
+          <h3>{heading.charAt(0).toUpperCase() + heading.slice(1)}</h3>
           <CloseAside />
         </header>
         <main>{children}</main>

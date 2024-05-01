@@ -23,7 +23,7 @@ export default function Collections() {
 
   return (
     <div className="collections">
-      <h1>Collections</h1>
+      <h1 className='section-header'>Catalog</h1>
       <Pagination connection={collections}>
         {({nodes, isLoading, PreviousLink, NextLink}) => (
           <div>
@@ -80,7 +80,7 @@ function CollectionItem({collection, index}) {
           loading={index < 3 ? 'eager' : undefined}
         />
       )}
-      <h5>{collection.title}</h5>
+      {/* <h5>{collection.title}</h5> */}
     </Link>
   );
 }

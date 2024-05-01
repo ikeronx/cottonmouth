@@ -8,7 +8,7 @@ const slideData = [
     description: 'Simplicity Never Looked Better!',
     ctaLink: '/collections/women',
     ctaText: 'Shop Now',
-    image: '/images/hero/hero-4.png',
+    image: '/images/hero/hero-white.png',
   },
   {
     id: 2,
@@ -17,11 +17,11 @@ const slideData = [
     description: 'Brand new reasons to go gym.',
     ctaLink: '/collections/women',
     ctaText: 'Shop Now',
-    image: '/images/hero/hero-women-2.jpeg',
+    image: '/images/hero/hero-white-2.png',
   },
 ];
 
-function WomenCarousel() {
+function MenCarousel() {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
@@ -36,12 +36,12 @@ function WomenCarousel() {
 
   // Styles for CTA button based on the index of the slide
   const ctaBtnStyles = [
-    {backgroundColor: '#fff', color: '#000'},
-    {backgroundColor: '#fff', color: '#000'},
+    {backgroundColor: '#1a1a1a', color: '#fff'},
+    {backgroundColor: '#1a1a1a', color: '#fff'},
   ];
 
   // Text styles for subheading, heading, and description based on the index of the slid
-  const textStyles = [{color: '#fff'}, {color: '#fff'}];
+  const textStyles = [{color: '#1a1a1a'}, {color: '#1a1a1a'}];
 
   return (
     <>
@@ -275,4 +275,4 @@ function WomenCarousel() {
   );
 }
 
-export default WomenCarousel;
+export default MenCarousel;

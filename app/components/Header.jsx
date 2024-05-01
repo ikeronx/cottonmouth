@@ -36,7 +36,7 @@ export function Header({header, isLoggedIn, cart}) {
           <NavLink to="/" style={{textDecoration: 'none'}}>
             <img
               className="header__logo w-32 h-auto"
-              src="/images/logos/cottonn.png"
+              src="/images/logos/cottongrey-white.png"
               alt="Spiral logo"
             />
           </NavLink>

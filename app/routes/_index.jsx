@@ -2,20 +2,10 @@ import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
 import { Image, Money } from '@shopify/hydrogen';
-import WomenHeroCarousel from '~/components/WomenHeroCarousel';
+import WomenCarousel from '~/components/WomenHeroCarousel';
+import MenCarousel from '~/components/MenCarousel';
+import Collections from './collections.$handle';
 // import MenHeroCarousel from '~/components/MenHeroCarousel';
-import {AddToCartButton} from '@shopify/hydrogen-react';
-// export default function ProductAddToCartButton({product}) {
-//   const variantId = product.variants[0].id;
-
-//   if (!variantId) {
-//     return null;
-//   }
-
-//   return <AddToCartButton variantId={product.variants[0].id} />;
-// }
-
-import ProductForm from '~/routes/products.$handle'; // Add to Cart button and functionality
 
 /**
  * @type {MetaFunction}
@@ -41,9 +31,10 @@ export default function Homepage() {
   const data = useLoaderData();
   return (
     <div className="home">
-      <WomenHeroCarousel />
+      <WomenCarousel />
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
       <RecommendedProducts products={data.recommendedProducts} />
+      <MenCarousel />
       {/* <MenHeroCarousel/> */}
     </div>
   );
@@ -109,9 +100,11 @@ function RecommendedProducts({products}) {
               </div>
 
               {/* Center-aligned link button */}
-              <div className="flex justify-center">
+              <div className="viewAllBtn flex justify-center ">
                 <Link to={`/collections/women`}>
-                  <span className="Primary__Button Dark__Button">View All</span>
+                  <span className="Primary__Button Dark__Button mt-12">
+                    View All
+                  </span>
                 </Link>
               </div>
             </div>
@@ -139,7 +132,7 @@ const FEATURED_COLLECTION_QUERY = `#graphql
   }
   query FeaturedCollection($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    collections(first: 1, sortKey: UPDATED_AT, reverse: false) {
+    collections(first: 1, sortKey: UPDATED_AT, reverse: true) {
       nodes {
         ...FeaturedCollection
       }
@@ -170,7 +163,7 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
   }
   query RecommendedProducts ($country: CountryCode, $language: LanguageCode)
     @inContext(country: $country, language: $language) {
-    products(first: 4, sortKey: UPDATED_AT, reverse: false) {
+    products(first: 8, sortKey: UPDATED_AT, reverse: true) {
       nodes {
         ...RecommendedProduct
       }
