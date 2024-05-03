@@ -317,8 +317,14 @@ aside li {
 * components/Footer
 * --------------------------------------------------
 */
+.footer-spacer{
+padding:0;
+line-height:70px;
+height:70px;
+}
+
 .footer {
-  background: var(--color-dark);
+  background-color: #f4f4f4;
   margin-top: auto;
 }
 
@@ -329,10 +335,12 @@ aside li {
   display: flex;
   justify-content: space-between;
   grid-gap: 4rem;
-  padding: 3rem 7rem;
+  padding: 4rem 7rem;
   text-transform: uppercase;
   font-weight: 300;
-  background-color: #f4f4f4;
+
+
+  
   @media (min-width: 45em) {
     flex-direction: row;
     grid-gap: 0rem;
@@ -361,13 +369,37 @@ aside li {
 
 .footer-links a {
   font-size: 1.4rem;
-  color: #717171 !important;
+  color: #949494  !important;
+  cursor: pointer;
+}
+
+.footer-links a:hover {
+
 }
 
 .footer-social-icons{
   display: flex;
   align-items: center;
   grid-gap: 4rem;
+}
+
+.footer-copyright{
+  font-family: 'Montserrat', sans-serif;
+  color: #949494;
+  background-color: #f4f4f4;
+  text-align: center;
+}
+
+.footer-copyright--link{
+  font-size: 1rem;
+  padding-block: 2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.footer-copyright--link:hover{
+  color: #707070;
 }
 
 /*
@@ -991,4 +1023,46 @@ text-align: center;
 
 .account-logout {
   display: inline-block;
+}
+
+/*
+* --------------------------------------------------
+* routes/policies._index.tsx
+* -------------------------o------------------------
+*/
+.policies{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 100;
+  font-size: 1rem;
+}
+
+/*
+* --------------------------------------------------
+* routes/policies.handle.tsx
+* -------------------------o------------------------
+*/
+
+.policy{
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
+  font-size: 1.6rem;
+  color: #333;
+  /* padding-inline: 30rem; */
+
+}
+
+.policy div p strong{
+  text-transform: uppercase;
+  font-size: 1.7rem;
+  font-weight: 300;
+  margin-bottom: 7rem;;
+}
+
+.policy-title{
+  font-size:2.2rem;
+  text-transform: uppercase;
+}
+
+.policy p{
+  font-size: 1.4rem;
 }

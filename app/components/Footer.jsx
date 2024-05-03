@@ -24,77 +24,92 @@ function FooterMenu({menu, primaryDomainUrl}) {
   const {publicStoreDomain} = useRootLoaderData();
 
   return (
-    <nav className="footer-menu" role="navigation">
-      {/* Left side logo */}
-      <div className="footer-logo">
-        <img
-          className="footer__logo w-62"
-          src="/images/logos/cotton-grey-backy.png"
-          alt="Logo"
-        />
-      </div>
+    <>
+      <nav className="footer-menu" role="navigation">
+        {/* Left side logo */}
+        <div className="footer-logo">
+          <img
+            className="footer__logo w-62"
+            src="/images/logos/cotton-grey-backy.png"
+            alt="Logo"
+          />
+        </div>
 
-      {/* Middle links */}
-      <div className="footer-links">
-        {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
-          if (!item.url) return null;
-          // if the url is internal, we strip the domain
-          const url =
-            item.url.includes('myshopify.com') ||
-            item.url.includes(publicStoreDomain) ||
-            item.url.includes(primaryDomainUrl)
-              ? new URL(item.url).pathname
-              : item.url;
-          const isExternal = !url.startsWith('/');
-          return isExternal ? (
-            <a
-              href={url}
-              key={item.id}
-              rel="noopener noreferrer"
-              target="_blank"
-              className="custom-color"
-            >
-              {item.title}
-            </a>
-          ) : (
-            <NavLink
-              end
-              key={item.id}
-              prefetch="intent"
-              style={activeLinkStyle}
-              to={url}
-            >
-              {item.title}
-            </NavLink>
-          );
-        })}
-      </div>
+        {/* Middle links */}
+        <div className="footer-links">
+          {/* <a href="/policies" target="_blank" rel="noopener noreferrer">
+          policies
+        </a> */}
+          {(menu || FALLBACK_FOOTER_MENU).items.map((item) => {
+            if (!item.url) return null;
+            // if the url is internal, we strip the domain
+            const url =
+              item.url.includes('myshopify.com') ||
+              item.url.includes(publicStoreDomain) ||
+              item.url.includes(primaryDomainUrl)
+                ? new URL(item.url).pathname
+                : item.url;
+            const isExternal = !url.startsWith('/');
+            return isExternal ? (
+              <a
+                href={url}
+                key={item.id}
+                rel="noopener noreferrer"
+                target="_blank"
+                className="custom-color"
+              >
+                {item.title}
+              </a>
+            ) : (
+              <NavLink
+                end
+                key={item.id}
+                prefetch="intent"
+                style={activeLinkStyle}
+                to={url}
+              >
+                {item.title}
+              </NavLink>
+            );
+          })}
+        </div>
 
-      {/* Right side social media icons */}
-      <div className="footer-social-icons">
+        {/* Right side social media icons */}
+        <div className="footer-social-icons">
+          <a
+            href="https://www.instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/images/icon/instagram.svg" alt="Instagram" />
+          </a>
+          <a
+            href="https://www.facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/images/icon/facebook.svg" alt="Facebook" />
+          </a>
+          <a
+            href="https://www.twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src="/images/icon/twitter.svg" alt="Twitter" />
+          </a>
+        </div>
+      </nav>
+      <div className="footer-copyright">
         <a
-          href="https://www.instagram.com"
+          href="https://ikeronx.github.io/portfolio-v2/"
           target="_blank"
           rel="noopener noreferrer"
+          className="footer-copyright--link"
         >
-          <img src="/images/icon/instagram.svg" alt="Instagram" />
-        </a>
-        <a
-          href="https://www.facebook.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/images/icon/facebook.svg" alt="Facebook" />
-        </a>
-        <a
-          href="https://www.twitter.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="/images/icon/twitter.svg" alt="Twitter" />
+          copyrght &copy; {new Date().getFullYear()} Keron Williams
         </a>
       </div>
-    </nav>
+    </>
   );
 }
 
