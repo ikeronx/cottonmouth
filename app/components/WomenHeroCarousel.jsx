@@ -17,7 +17,7 @@ const slideData = [
     description: 'Brand new reasons to go gym.',
     ctaLink: '/collections/women',
     ctaText: 'Shop Now',
-    image: '/images/hero/hero-women-2.jpeg',
+    image: '/images/hero/hero-00.png',
   },
 ];
 
