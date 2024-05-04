@@ -47,20 +47,11 @@ export async function loader({context}) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
-  console.log(
-    `💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖💖 ${JSON.stringify(
-      data.womenProducts,
-      null,
-      2,
-    )}`,
-  );
-
   return (
     <div className="home">
       <WomenCarousel />
       <WomenProducts products={data.womenProducts.collection} />
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
-      {/* <RecommendedProducts products={data.recommendedProducts} /> */}
       <MenCarousel />
       <AccessoriesProducts products={data.accessoriesProducts.collection} />
     </div>
