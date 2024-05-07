@@ -35,7 +35,6 @@ export async function loader({context}) {
     },
   });
   
-
   return defer({
     featuredCollection,
     recommendedProducts,

@@ -8,7 +8,7 @@ const slideData = [
     description: 'Simplicity Never Looked Better!',
     ctaLink: '/collections/women',
     ctaText: 'Shop Now',
-    image: '/images/hero/hero-4.png',
+    image: '/images/hero/hero-00.png',
   },
   {
     id: 2,
@@ -17,7 +17,7 @@ const slideData = [
     description: 'Brand new reasons to go gym.',
     ctaLink: '/collections/women',
     ctaText: 'Shop Now',
-    image: '/images/hero/hero-00.png',
+    image: '/images/hero/hero-2.png',
   },
 ];
 
